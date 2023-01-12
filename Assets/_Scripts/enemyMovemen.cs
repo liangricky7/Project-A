@@ -30,7 +30,7 @@ public class enemyMovemen : MonoBehaviour
 
         //finding the player by name
         if (playerObj==null){
-            playerObj=GameObject.Find("Player");
+            playerObj=GameObject.Find("PlayerModel");
         }
 
         player_x=playerObj.transform.position.x;
