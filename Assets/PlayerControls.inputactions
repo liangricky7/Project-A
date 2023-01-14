@@ -10,18 +10,9 @@
                     "type": "Value",
                     "id": "6515a912-0c0c-4076-b62b-d454e0392393",
                     "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
+                    "processors": "NormalizeVector2",
+                    "interactions": "Press",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "27cb06f0-b697-448c-aed7-6af1a8330db5",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -79,17 +70,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "896fdc80-723b-4f08-913f-96be6506426b",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },
