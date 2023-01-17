@@ -9832,7 +9832,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6569810}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -9939,7 +9939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: -1.49, z: -9.967487}
+  m_LocalPosition: {x: 2.507, y: -1.5040001, z: -9.967487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9980,6 +9980,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &596982154 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1754159115789314685, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
+  m_PrefabInstance: {fileID: 1754159115851281278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &658509280
 GameObject:
   m_ObjectHideFlags: 0
@@ -10043,7 +10048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658509280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: -1.49, z: -9.967487}
+  m_LocalPosition: {x: 2.507, y: -1.5040001, z: -9.967487}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10350,7 +10355,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072227065}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -10448,19 +10453,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1754159116501785359, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 1754159116501785359, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.014
       objectReference: {fileID: 0}
     - target: {fileID: 1754159117267405545, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
       propertyPath: groundTilemap
       value: 
       objectReference: {fileID: 6569813}
     - target: {fileID: 1754159117267405545, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
+      propertyPath: parentTransform
+      value: 
+      objectReference: {fileID: 596982154}
+    - target: {fileID: 1754159117267405545, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
       propertyPath: colliisionTilemap
       value: 
       objectReference: {fileID: 2072227068}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1754159116501785354, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
+    - {fileID: 1754159116501785357, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f0839d57250d444fbdc7867b733c3b5, type: 3}

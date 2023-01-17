@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour {
     private Tilemap groundTilemap;
     [SerializeField]
     private Tilemap colliisionTilemap;
-
+    [SerializeField]
+    private Transform parentTransform;
 
     private bool isMoving;
     private Vector2 move;
@@ -31,12 +32,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Move(Vector2 direction) {
         if (CanMove(direction)) {
-            transform.position += (Vector3)direction;
+            parentTransform.position += (Vector3)direction;
         }
     }
 
     private bool CanMove(Vector2 direction) { //checks if we can move to a tile
-        Vector3Int gridPosition = groundTilemap.WorldToCell(transform.position + (Vector3)direction); //attemped tile to move to
+        Vector3Int gridPosition = groundTilemap.WorldToCell(parentTransform.position + (Vector3)direction); //attemped tile to move to
         if (!groundTilemap.HasTile(gridPosition) || colliisionTilemap.HasTile(gridPosition)) {
             return false;
         }
