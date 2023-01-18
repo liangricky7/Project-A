@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 396404266}
   - component: {fileID: 396404265}
   m_Layer: 0
-  m_Name: EnemyDemoSprite
+  m_Name: TestEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
