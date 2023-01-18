@@ -1,12 +1,17 @@
 using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour
-{
-    public Rigidbody2D rb;
-        
+using UnityEngine.Tilemaps;
+public class PlayerMovement : MonoBehaviour {
     private PlayerControls playerControls;
+
+    [SerializeField]
+    private Tilemap groundTilemap;
+    [SerializeField]
+    private Tilemap colliisionTilemap;
+    [SerializeField]
+    private Transform parentTransform;
+
+    private bool isMoving;
     private Vector2 move;
-    private float speed = 1f;
 
     private void Awake() {
         playerControls = new PlayerControls();
@@ -21,19 +26,23 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        playerControls.Player.Move.performed += ctx => Move(ctx.ReadValue<Vector2>()); //every time we do movement keys we tell our move function how we wanna move
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        move = playerControls.Player.Move.ReadValue<Vector2>().normalized; //gets the input from WASD and puts them into a vector
-        Debug.Log(move);
+    private void Move(Vector2 direction) {
+        if (CanMove(direction)) {
+            parentTransform.position += (Vector3)direction;
+        }
     }
 
-    private void FixedUpdate() {
-        rb.MovePosition(rb.position + move * speed); //moves the player
+    private bool CanMove(Vector2 direction) { //checks if we can move to a tile
+        Vector3Int gridPosition = groundTilemap.WorldToCell(parentTransform.position + (Vector3)direction); //attemped tile to move to
+        if (!groundTilemap.HasTile(gridPosition) || colliisionTilemap.HasTile(gridPosition)) {
+            return false;
+        }
+        return true;
+
     }
+
 }
