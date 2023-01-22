@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour {
 
@@ -11,51 +13,54 @@ public class PlayerMovement : MonoBehaviour {
     private Transform parentTransform;
 
     private PlayerControls playerControls;
-    private ButtonControl buttonControl0,buttonControl1,buttonControl2,buttonControl3;
-    
+
+    private bool isMoveHeld;
+    private float delay = .1f; //delay for coroutine to run
 
     private void Awake() {
         playerControls = new PlayerControls();
-
-        buttonControl0 = (ButtonControl)playerControls.Player.Move.controls[0];
-        buttonControl1 = (ButtonControl)playerControls.Player.Move.controls[1];
-        buttonControl2 = (ButtonControl)playerControls.Player.Move.controls[2];
-        buttonControl3 = (ButtonControl)playerControls.Player.Move.controls[3];
     }
 
     private void OnEnable() {
+        playerControls.Player.Move.started += ctx => StartMovement(ctx.ReadValue<Vector2>());
+        playerControls.Player.Move.canceled += ctx => EndMovement();
+
         playerControls.Enable();
     }
 
     private void OnDisable() {
+        playerControls.Player.Move.started -= ctx => StartMovement(ctx.ReadValue<Vector2>());
+        playerControls.Player.Move.canceled -= ctx => EndMovement();
         playerControls.Disable();
     }
 
-    // Start is called before the first frame update
-    void Update() {
-        //playerControls.Player.Move.performed += ctx => Move(ctx.ReadValue<Vector2>()); //every time we press the movement keys we tell our move function how we wanna move
-        
-        if (isMoving()){
-            Debug.Log("moving");
-            Move(playerControls.Player.Move.ReadValue<Vector2>());
-        }
 
- 
+    private void StartMovement(Vector2 direction) {
+        isMoveHeld = true;
+        StartCoroutine(Move(direction));
     }
 
-    private bool isMoving(){
-        if (buttonControl0.isPressed | buttonControl1.isPressed |buttonControl2.isPressed| buttonControl3.isPressed){
-            return true;
+    IEnumerator Move(Vector2 direction) {
+        while (isMoveHeld) {
+            if (CanMove(direction)) parentTransform.position += (Vector3) direction;
+            yield return new WaitForSeconds(delay);
         }
-        return false;
     }
 
-    private void Move(Vector2 direction) {
-        if (CanMove(direction)) {
-            parentTransform.position += (Vector3)direction; //note that this works due to the grid understanding each cell is 1x1
+    private void EndMovement() {
+        Debug.Log("called");
+        if (isMoveHeld) {
+            isMoveHeld = false;
         }
-        Debug.Log("moved");
     }
+
+
+    //private void Move(Vector2 direction) {
+    //    if (CanMove(direction)) {
+    //        parentTransform.position += (Vector3)direction; //note that this works due to the grid understanding each cell is 1x1
+    //    }
+    //    Debug.Log("moved");
+    //}
 
     private bool CanMove(Vector2 direction) { //checks if we can move to a tile
         Vector3Int gridPosition = groundTilemap.WorldToCell(parentTransform.position + (Vector3)direction); //attemped tile to move to
