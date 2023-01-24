@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Interactions;
 using UnityEngine.Tilemaps;
 public class PlayerMovement : MonoBehaviour {
 
@@ -16,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool isMoveHeld;
     private float delay = .1f; //delay for coroutine to run
+    private InputControl previousInput;
 
     private void Awake() {
         playerControls = new PlayerControls();
@@ -41,6 +41,9 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     IEnumerator Move(Vector2 direction) {
+        if (isMoveHeld) {
+
+        }
         while (isMoveHeld) {
             if (CanMove(direction)) parentTransform.position += (Vector3) direction;
             yield return new WaitForSeconds(delay);
