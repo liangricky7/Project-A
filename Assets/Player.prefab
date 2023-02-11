@@ -165,7 +165,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &1754159117267405547
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundTilemap: {fileID: 0}
   colliisionTilemap: {fileID: 0}
-  parentTransform: {fileID: 0}
+  parentTransform: {fileID: 1754159115789314685}
+  rb: {fileID: 1754159116501785357}
+  speed: 6
 --- !u!114 &1754159117267405542
 MonoBehaviour:
   m_ObjectHideFlags: 0

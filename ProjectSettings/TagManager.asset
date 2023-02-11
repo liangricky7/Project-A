@@ -11,6 +11,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Collider
+  - Player
+  - Enemies and NPCs
   - 
   - 
   - 
@@ -19,10 +22,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Floor
   - 
   - 
   - 
