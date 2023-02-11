@@ -29,12 +29,14 @@ public class PlayerMovement : MonoBehaviour {
     private void OnEnable() {
         //playerControls.Player.Move.started += ctx => StartMovement(ctx);
         //playerControls.Player.Move.canceled += ctx => EndMovement();
+        playerControls.Player.Interact.performed += ctx => TileSnap();
         playerControls.Enable();
     }
 
     private void OnDisable() {
         //playerControls.Player.Move.started -= ctx => StartMovement(ctx);
         //playerControls.Player.Move.canceled -= ctx => EndMovement();
+        playerControls.Player.Interact.performed -= ctx => TileSnap();
         playerControls.Disable();
     }
 
@@ -47,6 +49,9 @@ public class PlayerMovement : MonoBehaviour {
        rb.velocity = new Vector2(direction.x * speed, direction.y * speed);
     }
 
+    public void TileSnap() {
+    
+    }
 
     //private void StartMovement(InputAction.CallbackContext ctx) {
     //    isMoveHeld = true;
